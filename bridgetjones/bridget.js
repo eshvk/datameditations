@@ -54,7 +54,7 @@
 											.domain([-xPadding, d3.max(dataset, function(d) {return d[0];} )])
 											 .range([xPadding, w - xPadding]).nice();
 					var yScale = d3.scale.linear()
-											.domain([0, 2*d3.max(dataset, function(d) {return d[1];} )])
+											.domain([0.9*d3.min(dataset, function(d) {return d[1];}), 1.1*d3.max(dataset, function(d) {return d[1];}])
 											.range([h - yPadding, yPadding]).nice();
 					var xAxis = d3.svg.axis()
 											.scale(xScale)
@@ -115,8 +115,8 @@
 						 .attr("fill-opacity",TRANSPARENT)
 						 .on("mouseover",function(d) {
 						 	eliminateDISTRACTIONs(d3.selectAll("circle"),d3.select(this));
-							var xPosition = parseFloat(d3.select(this).attr("cx")) + w/4;
-							var yPosition = parseFloat(d3.select(this).attr("cy")) + yPadding;
+	 						var xPosition = parseFloat(d3.event.pageX) + w/16;
+						 	var yPosition = parseFloat(d3.event.pageY) - h/4;
 							d3.select("#caption")
 							  .style("left", xPosition + "px")
 	  						  .style("top", yPosition + "px")
