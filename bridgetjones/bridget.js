@@ -1,6 +1,9 @@
-			var TRANSPARENT = 0.3;
+/* Generates Bridget Jones's weight in correspondence with her moods throughout a year
+*/				
+				var TRANSPARENT = 0.3;
 				var OPAQUE = 1.0;
 				var DISTRACTION = 0.075;
+				/* Extracting the subsampled data and putting into something d3 understands*/
 				d3.json("book_1_gist_subsampled.json",function(error, data){
 					if (error) {
 						console.log(error);
@@ -19,9 +22,12 @@
 				
 					}
 				});
+				/* Because Bridget Jones's weights are so close to each other 
+				that we wish to sometimes jitter them */
 				var jitter = function (epsilon) {
 					return Math.random()*(2*epsilon) - epsilon;
 				};
+				/* Make other weights transparent when the mouse is over a certain weight */
 				var eliminateDISTRACTIONs = function (circles, currCircle) {
 					circles.filter(function(d){
 						return d[0] != currCircle[0][0].__data__[0];
@@ -34,6 +40,7 @@
 					.duration(200)
 					.attr("fill-opacity",OPAQUE);
 				};
+				/* Restore all weights to original color */
 				var restoreAll = function (circles) {
 					circles
 					.transition()
@@ -50,6 +57,7 @@
 					var r = 5;
 					var yPadding = 30;
 					var xPadding = 30;
+					/* Construct Scales, Axes */
 					var xScale = d3.scale.linear()
 											.domain([-xPadding, d3.max(dataset, function(d) {return d[0];} )])
 											 .range([xPadding, w - xPadding]).nice();
@@ -64,6 +72,7 @@
 											.scale(yScale)
 											.orient("left")
 											.ticks(5);
+					/* Create an SVG and group all the axes, circles etc */
 					var svg = d3.select("#bridgetchart")
 								.append("svg")
 								.attr("width", w)
@@ -106,7 +115,7 @@
 						 .attr("r", r)
 						 .attr("fill",function (d) {
 							if (d[1] >= mean) {
-								return "red";
+								return "red"; //color based on where the weight lies
 							}
 							else {
 								return "green";
