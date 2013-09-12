@@ -1,0 +1,46 @@
+
+#caption {
+	position: absolute;
+	width: 250px;
+	height: auto;
+	padding: 10px;
+	background-color: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
+#caption.hidden {
+	display: none;
+}
+
+#caption p {
+	margin: 0;
+	font-family: helvetica;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+.label {
+	font-family: helvetica;
+	font-size: 13px;
+	fill: black;
+}
+.title {
+	font-family: helvetica;
+	font-size: 15px;
+}
+.axis text {
+	font-family: helvetica;
+	font-size: 11px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
