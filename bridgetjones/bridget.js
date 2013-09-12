@@ -64,7 +64,7 @@
 											.scale(yScale)
 											.orient("left")
 											.ticks(5);
-					var svg = d3.select("body")
+					var svg = d3.select("#bridgetchart")
 								.append("svg")
 								.attr("width", w)
 								.attr("height", h);
