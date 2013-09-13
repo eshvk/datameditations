@@ -73,7 +73,7 @@
 											.orient("left")
 											.ticks(5);
 					/* Create an SVG and group all the axes, circles etc */
-					var svg = d3.select("#bridgetchart")
+					var svg = d3.select("body")
 								.append("svg")
 								.attr("width", w)
 								.attr("height", h);
